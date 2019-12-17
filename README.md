@@ -1,7 +1,7 @@
-# Multimodaler Bedeutungstransfer vom Text zum Bild. Granulare Bildklassifikation durch Verteilungssemantik.
-*DHd2020*
+# Multimodal Semantic Transfer from Text to Image. Fine-Grained Image Classification by Distributional Semantics.
+**English Version** of *DHd2020*
 
-[![CircleCI](https://circleci.com/gh/bermeitinger-b/DHd2020-Multimodaler-Bedeutungstransfer.svg?style=svg&circle-token=85bc9f1bdaea67b597fa39f40150a91fc835a6c0)](https://circleci.com/gh/bermeitinger-b/DHd2020-Multimodaler-Bedeutungstransfer)
+[![CircleCI](https://circleci.com/gh/bermeitinger-b/Multimodal-Semantic-Transfer-from-Text-to-Image.svg?style=svg&circle-token=2478ee581604c2d908eb392447640e15c1f77f7a)](https://circleci.com/gh/bermeitinger-b/DHd2020-Multimodaler-Bedeutungstransfer)
 
 
-[Get PDF](https://circleci.com/api/v1.1/project/gh/bermeitinger-b/DHd2020-Multimodaler-Bedeutungstransfer/latest/artifacts/0/output/main.pdf\?circle-token\=a02cdde95b74c7d180bd17a146595439fcfa20e2)
+[Get PDF](https://circleci.com/api/v1.1/project/gh/bermeitinger-b/Multimodal-Semantic-Transfer-from-Text-to-Image/latest/artifacts/0/output/main.pdf\?circle-token\=eaf03d92f652afd166fa52f727f16e2411217cc0)
