@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: bermeitingerb/texlive:latest
+    steps:
+      - checkout
+      - run: 
+          name: Build with LatexMK
+          command: |
+            latexmk -f -interaction=batchmode;
+            mkdir /output;
+            cp *.pdf /output/
+      - store_artifacts:
+          path: /output
