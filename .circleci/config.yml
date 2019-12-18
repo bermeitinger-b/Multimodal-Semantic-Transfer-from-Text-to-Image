@@ -8,7 +8,7 @@ jobs:
       - run: 
           name: Build with LatexMK
           command: |
-            latexmk -f -interaction=batchmode;
+            latexmk;
             mkdir /output;
             cp *.pdf /output/
       - store_artifacts:
