@@ -1,11 +1,11 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = en_US
-\documentclass{scrartcl}
+\documentclass{article}
+
+\usepackage{arxivEN}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
-\usepackage{authblk}
 
 \usepackage{graphicx}
 
@@ -22,21 +22,47 @@
 \usepackage{siunitx}
 
 \usepackage{hyperref}
+\usepackage{url}
 
 \addbibresource{references.bib}
-\graphicspath{{figures/}}
+\graphicspath{{figures/}, {images/}}
 
-\title{Multimodal Semantic Transfer\\ from Text to Image.\\ Fine-Grained Image Classification by\\ Distributional Semantics.}
+\title{Multimodal Semantic Transfer from Text to Image. Fine-Grained Image Classification by Distributional Semantics.}
 
-\author[1]{Simon Donig\thanks{\url{simon.donig@uni-passau.de}}}
-\author[2]{Maria Christoforaki\thanks{\url{maria.christoforaki@unisg.ch}}}
-\author[2]{Bernhard Bermeitinger\thanks{\url{bernhard.bermeitinger@unisg.ch}}}
-\author[2]{Siegfried Handschuh\thanks{\url{siegfried.handschuh@unisg.ch}}}
 
-\affil[1]{Chair für Digital Humanities, University Passau, Germany}
-\affil[2]{Institut für Computer Science, University of St.Gallen (HSG), Switzerland}
+\author{
+    Simon Donig \href{https://orcid.org/0000-0002-1741-466X}{\includegraphics[scale=0.06]{orcid}}\\
+    Chair for Digital Humanities,\\
+    University Passau, Germany\\
+    \url{simon.donig@uni-passau.de}\\
+    \And
+    Maria Christoforaki \\
+    Chair for Data Science,\\
+    Institute for Computer Science,\\
+    University of St.Gallen (HSG), Switzerland \\
+    \url{maria.christoforaki@unisg.ch} \\
+    \AND
+    Bernhard Bermeitinger \href{https://orcid.org/0000-0002-2524-1850}{\includegraphics[scale=0.06]{orcid}} \\
+    Chair for Data Science,\\
+    Institute for Computer Science,\\
+    University of St.Gallen (HSG), Switzerland \\
+    \url{bernhard.bermeitinger@unisg.ch} \\
+    \And
+    Siegfried Handschuh \\
+    Chair for Data Science,\\
+    Institute for Computer Science,\\
+    University of St.Gallen (HSG), Switzerland \\
+    \url{siegfried.handschuh@unisg.ch} \\
+}
 
 \date{December 2019}
+
+
+\hypersetup{
+	pdftitle={Multimodal Semantic Transfer from Text to Image. Fine-Grained Image Classification by Distributional Semantics.},
+	pdfauthor={Simon Donig, Maria Christoforaki, Bernhard Bermeitinger, Siegfried Handschuh},
+	pdfkeywords={deep learning, artificial neural networks, digital humanities, distributional semantics, neoclassicism}
+}
 
 \begin{document}
 
