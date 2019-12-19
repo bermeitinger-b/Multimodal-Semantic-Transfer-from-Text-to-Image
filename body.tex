@@ -24,7 +24,7 @@ The experiment is based on one text and one visual corpus from the area of mater
 \subsection{Text Corpus}
 The text corpus is compiled out of 44 sources that are available under a free and permissive license. It contains English specialist publications on furniture and spatial art, published from the end of the 19\textsuperscript{th} century to the middle of the 20\textsuperscript{th} century. In multiple steps, the corpus is cleaned and preprocessed. First, a series of standard NLP methods are applied like tokenization, sentence- and word splitting, normalization of numbers, and named entity recognition (NER). Since we used retro-digitized material from a different source, we implemented manual corrections for the most common errors (such as ligatures like \texttt{TT} that were misinterpreted as \texttt{U}). Another level of preprocessing consists of content-related augmentations. In particular, we normalized compound words and synonyms according to a specified list, which is based on an ontology, the \emph{Neoclassica-Ontology} \parencite{donig_NeoclassicaMultilingualDomainOntology_2016}. This resulted in the final text corpus of total \num{3067237} words comprised of \num{107518} basic word forms.
 
-The DSM is created using the \emph{Indra Frameworks} \parencite{sales_IndraWordEmbeddingSemanticRelatedness_2018a} with a vector size of \num{50}, a word window size of \num{10}, and minimal word count of \num{5}. We used skipgram as the word2vec model \parencite{mikolov_EfficientEstimationWordRepresentationsVector_2013} with negative sampling.
+The DSM is created using the \emph{Indra Frameworks} \parencite{sales_IndraWordEmbeddingSemanticRelatedness_2018a} with a vector size of \num{50}, a word window size of \num{10}, and minimal word count of \num{5}. We used \emph{Skipgram} as the \emph{Word2Vec} model \parencite{mikolov_EfficientEstimationWordRepresentationsVector_2013} with negative sampling.
 
 \subsection{Image Corpus}
 The image corpus consists of \num{1231} images of neoclassical furniture in their entirety, which are permissive licensed\footnote{The corpus was compiled from collections from the Metropolitan Museum, New York, the Victoria \& Albert Museum, London, the Wallace Collection, London, and several contemporary pattern books.}. The images are either historical pictorial material or photographs from the modern as-built documentation. They are split into \num{28} different classes.
@@ -32,7 +32,7 @@ The image corpus consists of \num{1231} images of neoclassical furniture in thei
 \subsection{Combined Corpus}
 The nature of the experiment is \emph{proof-of-concept}, so we used a VGG-like architecture of a \enquote{simple} convolutional neural network\footnote{The CNN is built from three convolutional blocks with two consecutive Convolutional Layers each with 32/64/64 filters of size $ 3 \times 3 $. Each block is followed by a Maximum Pooling Layer with a size of $ 2 \times 2 $ and a Dropout Layer for regularization with a dropout rate of \num{0.25}. After the Convolutional Block, there are two Fully Connected Layers with \num{256} nodes and a Dropout Layer with a dropout rate of \num{0.5}. The weights and biases for the Convolutional and the Fully Connected Layers are initialized randomly. Their activation function is \emph{ReLU}. The last layer, the classification layer, is a Fully Connected Layer with \num{50} output nodes and a linear activation function. The optimization function of the chosen \emph{mean absolute error} function is \emph{RMSprop}. The implementation is done with Keras (\url{https://keras.io}) and TensorFlow (\url{https://tensorflow.org})}.
 
-The independence and robustness of the train/test split are guaranteed with 5-fold cross-validation on \SI{\percent}{80} on the full corpus from which \SI{\percent}{80} are used for training and \SI{\percent}{20} for testing. The remaining \SI{\percent}{20} are treated as an evaluation set.
+The independence and robustness of the train/test split are guaranteed with 5-fold cross-validation on \SI{80}{\percent} on the full corpus from which \SI{80}{\percent} are used for training and \SI{20}{\percent} for testing. The remaining \SI{20}{\percent} are treated as an evaluation set.
 
 \begin{figure}
     \centering
@@ -48,7 +48,7 @@ The dataset is unbalanced, as can be seen in Fig.~\ref{fig:class_distribution}. 
 
 \subsection{Results for CNN trained on Word Vectors}
 
-The Top-5 true-positive rate is \num{0.6052}, meaning that the gold label from the annotations is in \SI{\percent}{60} of the cases within the list of the five nearest neighbors.
+The Top-5 true-positive rate is \num{0.6052}, meaning that the gold label from the annotations is in \SI{60}{\percent} of the cases within the list of the five nearest neighbors.
 
 However, the mathematical quality metric in itself represents only part of the overall picture. For this reason, a qualitative analysis of the results was performed.
 
@@ -59,25 +59,25 @@ As an example, the \emph{Roentgen} desk from the \emph{Victoria \& Albert} inven
 \begin{figure}
     \centering
     \includegraphics[height=.4\textheight]{classification_same_object_1}
-    \caption{Abweichungen bei der Klassifizierung desselben Objekts (1)}
+    \caption{Differences in the classification of the same object (1)}
     \label{fig:classification_same_object_1}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[height=.4\textheight]{classification_same_object_2}
-    \caption{Abweichungen bei der Klassifizierung desselben Objekts (2)}
+    \caption{Differences in the classification of the same object (2)}
     \label{fig:classification_same_object_2}
 \end{figure}
 
 
-While the labels considered so far reflect the taxonomic relationships and all originate from the target words derived from the ontology, Fig.~\ref{fig:medici_vase} shows that the procedure can also generate labels for itself, purely data-driven. The crater vase shown was originally classified as an urn. The Top-2 words therefore also reflect taxonomic relationships (\enquote{urn}, \enquote{vase}). The other concepts reflect associative relationships. The label \texttt{bell} is a leftover from the data cleaning process of the text corpus to describe this kind of artifact. \enquote{Ovoid} refers to the egg stick decoration of the upper bead, which is often described with this adjective. This ornamentation seems at the same time to have an association with the rosette (patera). In this way, the target word \texttt{patera\_element} appears among the top 5 nearest neighbors, although only whole artifacts were annotated in the image corpus but not their decoration.
+While the labels considered so far reflect the taxonomic relationships and all originate from the target words derived from the ontology, Fig.~\ref{fig:medici_vase} shows that the procedure can also generate labels for itself, purely data-driven. The crater vase shown was originally classified as an urn. The Top-2 words therefore also reflect taxonomic relationships (\enquote{urn}, \enquote{vase}). The other concepts reflect associative relationships. The label \texttt{bell} is a leftover from the data cleaning process of the text corpus to describe this kind of artifact. \enquote{Ovoid} refers to the egg stick decoration of the upper bead, which is often described with this adjective. This ornamentation seems at the same time to have an association with the rosette (patera). In this way, the target word \texttt{patera\_element} appears among the top-5 nearest neighbors, although only whole artifacts were annotated in the image corpus but not their decoration.
 
 
 \begin{figure}
     \centering
     \includegraphics[height=.6\textheight]{medici_vase}
-    \caption{A sèvres copy of a Medici vase results in a classication of associative labels.}
+    \caption{A sèvres copy of a Medici vase results in a classification of associative labels.}
     \label{fig:medici_vase}
 \end{figure}
 
