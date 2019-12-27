@@ -5,3 +5,5 @@
 
 
 [Get PDF](https://circleci.com/api/v1.1/project/gh/bermeitinger-b/Multimodal-Semantic-Transfer-from-Text-to-Image/latest/artifacts/0/output/main.pdf\?circle-token\=eaf03d92f652afd166fa52f727f16e2411217cc0)
+
+[Get arXiv-ready zip](https://circleci.com/api/v1.1/project/gh/bermeitinger-b/Multimodal-Semantic-Transfer-from-Text-to-Image/latest/artifacts/0/output/arxiv.zip\?circle-token\=eaf03d92f652afd166fa52f727f16e2411217cc0)
