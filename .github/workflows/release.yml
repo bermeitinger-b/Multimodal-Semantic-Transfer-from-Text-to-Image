@@ -1,0 +1,108 @@
+name: Upload Release Assets
+
+on: 
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Upload Release Assets
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v1
+      
+      # CREATE RELEASE
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      # BUILD 2016
+      - name: Use TeXLive 2016
+        uses: bermeitinger-b/gh-latexmk@master
+        with:
+          texlive: 2016
+
+      - name: Publish PDF
+        uses: actions/upload-artifact@v1
+        with:
+          name: main-2016.pdf
+          path: /out/artifact/main.pdf
+
+      - name: Publish ZIP
+        uses: actions/upload-artifact@v1
+        with:
+          name: main-2016.zip
+          path: /out/artifact/main.zip
+
+      # RELEASE 2016
+      - name: Upload Release Asset (2016 pdf)
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /out/artifact/main.pdf
+          asset_name: main-2016.pdf
+          asset_content_type: application/pdf
+      
+      - name: Upload Release Asset (2016 pdf)
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /out/artifact/main.zip
+          asset_name: main-2016.zip
+          asset_content_type: application/zip
+
+      # BUILD LATEST
+      - name: Use TeXLive latest
+        uses: bermeitinger-b/gh-latexmk@master
+        with:
+          texlive: latest
+      
+      - name: Publish PDF
+        uses: actions/upload-artifact@v1
+        with:
+          name: main-latest.pdf
+          path: /out/artifact/main.pdf
+
+      - name: Publish ZIP
+        uses: actions/upload-artifact@v1
+        with:
+          name: main-latest.zip
+          path: /out/artifact/main.zip
+
+      # RELEASE LATEST
+      - name: Upload Release Asset (latest pdf)
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /out/artifact/main.pdf
+          asset_name: main-latest.pdf
+          asset_content_type: application/pdf
+      
+      - name: Upload Release Asset (latest zip)
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /out/artifact/main.zip
+          asset_name: main-latest.zip
+          asset_content_type: application/zip
+

@@ -1,10 +1,6 @@
 name: LaTeX compilation
 
-on:
-  push:
-    branches:
-      - 'workflow'
-      - 'master'
+on: [push]
 
 jobs:
   build:
@@ -30,10 +26,10 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: main-${{ matrix.texlive }}.pdf
-        path: main.pdf
+        path: /out/artifact/main.pdf
 
     - name: Publish ZIP
       uses: actions/upload-artifact@v1
       with:
         name: main-${{ matrix.texlive }}.zip
-        path: main.zip
+        path: /out/artifact/main.zip
