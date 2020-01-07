@@ -1,0 +1,39 @@
+name: LaTeX compilation
+
+on:
+  push:
+    branches:
+      - 'workflow'
+      - 'master'
+
+jobs:
+  build:
+   
+   runs-on: ubuntu-latest
+  
+   strategy:
+     fail-fast: true
+     matrix:
+       texlive: [latest, 2016]
+   
+   steps:
+    
+    - name: Checkout sources
+      uses: actions/checkout@v1
+    
+    - name: Use TeXLive ${{ matrix.texlive }}
+      uses: bermeitinger-b/gh-latexmk@master
+      with:
+        texlive: ${{ matrix.texlive }} 
+
+    - name: Publish PDF
+      uses: actions/upload-artifact@v1
+      with:
+        name: main-${{ matrix.texlive }}.pdf
+        path: main.pdf
+
+    - name: Publish ZIP
+      uses: actions/upload-artifact@v1
+      with:
+        name: main-${{ matrix.texlive }}.zip
+        path: main.zip
