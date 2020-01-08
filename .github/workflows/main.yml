@@ -26,10 +26,10 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: main-${{ matrix.texlive }}.pdf
-        path: /out/artifact/main.pdf
+        path: /out/main.pdf
 
     - name: Publish ZIP
       uses: actions/upload-artifact@v1
       with:
         name: main-${{ matrix.texlive }}.zip
-        path: /out/artifact/main.zip
+        path: /out/main.zip

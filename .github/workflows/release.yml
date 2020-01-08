@@ -34,18 +34,6 @@ jobs:
         with:
           texlive: 2016
 
-      - name: Publish PDF
-        uses: actions/upload-artifact@v1
-        with:
-          name: main-2016.pdf
-          path: /out/artifact/main.pdf
-
-      - name: Publish ZIP
-        uses: actions/upload-artifact@v1
-        with:
-          name: main-2016.zip
-          path: /out/artifact/main.zip
-
       # RELEASE 2016
       - name: Upload Release Asset (2016 pdf)
         uses: actions/upload-release-asset@v1.0.1
@@ -53,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /out/artifact/main.pdf
+          asset_path: /out/main.pdf
           asset_name: main-2016.pdf
           asset_content_type: application/pdf
       
@@ -63,7 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /out/artifact/main.zip
+          asset_path: /out/main.zip
           asset_name: main-2016.zip
           asset_content_type: application/zip
 
@@ -73,18 +61,6 @@ jobs:
         with:
           texlive: latest
       
-      - name: Publish PDF
-        uses: actions/upload-artifact@v1
-        with:
-          name: main-latest.pdf
-          path: /out/artifact/main.pdf
-
-      - name: Publish ZIP
-        uses: actions/upload-artifact@v1
-        with:
-          name: main-latest.zip
-          path: /out/artifact/main.zip
-
       # RELEASE LATEST
       - name: Upload Release Asset (latest pdf)
         uses: actions/upload-release-asset@v1.0.1
@@ -92,7 +68,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /out/artifact/main.pdf
+          asset_path: /out/main.pdf
           asset_name: main-latest.pdf
           asset_content_type: application/pdf
       
@@ -102,7 +78,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /out/artifact/main.zip
+          asset_path: /out/main.zip
           asset_name: main-latest.zip
           asset_content_type: application/zip
 
